@@ -1,25 +1,28 @@
 #include <stdio.h>
+#include <iostream>
 
-void fizzybuzz(int x)
+std::string fizzybuzz(int x)
 {
   int fizz{3};
   int buzz{5};
-  if (x%fizz==0 && x%buzz==0)
+  std::string out{""};
+
+  if (x%fizz==0)
     {
-      printf ("%s\n","FizzBuzz");
+      out = out + "fizz";
     }
-  else if (x%fizz==0)
+
+  if (x%buzz==0)
     {
-      printf ("%s\n", "Fizz");
+      out = out + "buzz";
     }
-  else if (x%buzz==0)
+
+  if (out=="")
     {
-      printf ("%s\n", "Buzz");
+      printf ("%i",x);
     }
-  else
-    {
-      printf ("%i \n", x);
-    }
+
+  return out;
 }
 
 int main()
@@ -28,7 +31,7 @@ int main()
   do
     {
       x = x+1;
-      fizzybuzz(x);
+      std::cout << fizzybuzz(x) << std::endl;
     }
   while (x < 100);
   return 0;
